@@ -1,0 +1,92 @@
+{
+	"ImportPath": "github.com/laincloud/tinydns",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v62",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/codegangsta/inject",
+			"Comment": "v1.0-rc1-10-g33e0aa1",
+			"Rev": "33e0aa1cb7c019ccc3fbe049a8262a6403d30504"
+		},
+		{
+			"ImportPath": "github.com/go-martini/martini",
+			"Comment": "v1.0-134-g184178f",
+			"Rev": "184178ffc6b2f7b86b8b99c2a411de8771708a0a"
+		},
+		{
+			"ImportPath": "github.com/laincloud/deployd/cluster",
+			"Rev": "d76bb13011bd6024c0d31351c0e8cdb2ab73e00d"
+		},
+		{
+			"ImportPath": "github.com/laincloud/deployd/engine",
+			"Rev": "d76bb13011bd6024c0d31351c0e8cdb2ab73e00d"
+		},
+		{
+			"ImportPath": "github.com/laincloud/deployd/storage",
+			"Rev": "d76bb13011bd6024c0d31351c0e8cdb2ab73e00d"
+		},
+		{
+			"ImportPath": "github.com/laincloud/lainlet/api",
+			"Rev": "39bc2a643c90e2a1ca21b548a98353d135a72fb2"
+		},
+		{
+			"ImportPath": "github.com/laincloud/lainlet/api/v2",
+			"Rev": "39bc2a643c90e2a1ca21b548a98353d135a72fb2"
+		},
+		{
+			"ImportPath": "github.com/laincloud/lainlet/auth",
+			"Rev": "39bc2a643c90e2a1ca21b548a98353d135a72fb2"
+		},
+		{
+			"ImportPath": "github.com/laincloud/lainlet/client",
+			"Rev": "39bc2a643c90e2a1ca21b548a98353d135a72fb2"
+		},
+		{
+			"ImportPath": "github.com/laincloud/lainlet/store",
+			"Rev": "39bc2a643c90e2a1ca21b548a98353d135a72fb2"
+		},
+		{
+			"ImportPath": "github.com/laincloud/lainlet/watcher",
+			"Rev": "39bc2a643c90e2a1ca21b548a98353d135a72fb2"
+		},
+		{
+			"ImportPath": "github.com/laincloud/lainlet/watcher/config",
+			"Rev": "39bc2a643c90e2a1ca21b548a98353d135a72fb2"
+		},
+		{
+			"ImportPath": "github.com/laincloud/lainlet/watcher/container",
+			"Rev": "39bc2a643c90e2a1ca21b548a98353d135a72fb2"
+		},
+		{
+			"ImportPath": "github.com/laincloud/lainlet/watcher/depends",
+			"Rev": "39bc2a643c90e2a1ca21b548a98353d135a72fb2"
+		},
+		{
+			"ImportPath": "github.com/laincloud/lainlet/watcher/nodes",
+			"Rev": "39bc2a643c90e2a1ca21b548a98353d135a72fb2"
+		},
+		{
+			"ImportPath": "github.com/laincloud/lainlet/watcher/podgroup",
+			"Rev": "39bc2a643c90e2a1ca21b548a98353d135a72fb2"
+		},
+		{
+			"ImportPath": "github.com/mijia/adoc",
+			"Rev": "b13894c1c54204ed818a345d2a5d7fc30f0c7239"
+		},
+		{
+			"ImportPath": "github.com/mijia/go-generics",
+			"Rev": "2278a5f0de143e1d17ea16d56e7f85391bdb85a3"
+		},
+		{
+			"ImportPath": "github.com/mijia/sweb/log",
+			"Rev": "14329ad4fe2a6f7a337bb9518127dc9982134a54"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "35ec611a141ee705590b9eb64d673f9e6dfeb1ac"
+		}
+	]
+}
