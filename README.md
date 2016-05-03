@@ -1,5 +1,5 @@
 # Tinydns
-
+[![MIT license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
 ## Introduction
 作为Lain集群中重要的layer1组件，tinydns 是一个轻量级的域名解析服务，负责集群中应用内部各个proc之间的`proc_name-instance_no`的地址解析，和use_service时，`service_name`的地址解析。应用升级，或容器迁移后，proc的各个instance的IP地址有可能发生变化，`proc_name-instance_no`和`service_name`是应用内部以及应用与service/resource通信定位的唯一依据，因此tinydns配置的正确性与高可用性是应用能够正常运转的基础。
 
