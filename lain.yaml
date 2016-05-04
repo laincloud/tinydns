@@ -3,9 +3,11 @@ appname: tinydns
 build:
   base: laincloud/centos-lain:20160503
   prepare:
-    version: tinydns200
+    version: 200
     script:
       - yum install -y ndjbdns supervisor
+      - yum -y clean all
+      - rm -rf /tmp/*
       - mkdir -p $GOPATH/src/github.com/laincloud
   script:
     - ln -s /lain/app $GOPATH/src/github.com/laincloud/tinydns
