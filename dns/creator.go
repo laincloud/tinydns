@@ -95,6 +95,7 @@ func (c *Creator) createDNS() error {
 func (c *Creator) prepareData() []string {
 	var lines []string
 	apps := make(map[string]int)
+	node := NewNode()
 	// Write appInfos
 	for key, val := range c.coreInfo {
 		keyParts := strings.Split(key, ".")
@@ -133,7 +134,8 @@ func (c *Creator) prepareData() []string {
 							annotationInfo.ServiceName,
 							appName,
 							portalInfo.Containers[0].ContainerIP,
-							portalInfo.Containers[0].NodeIP))
+							//portalInfo.Containers[0].NodeIP))
+							node.GetID(portalInfo.Containers[0].NodeIP)))
 				}
 			}
 		}
@@ -165,6 +167,13 @@ func (c *Creator) prepareData() []string {
 		for app, _ := range apps {
 			lines = append(lines, fmt.Sprintf("+%s.lain:%s:300::", app, webrouterIp))
 		}
+	}
+
+	for ip, id := range node.index {
+		if id < 0 {
+			continue
+		}
+		lines = append(lines, fmt.Sprintf("%%%02X:%s", id, ip))
 	}
 	return lines
 }

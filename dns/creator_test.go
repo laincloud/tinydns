@@ -471,9 +471,10 @@ func TestPrepareData(t *testing.T) {
 		"+vault.lain:192.168.77.201:300::",
 		"+lvault.lain:192.168.77.201:300::",
 		"+perf.hello-server.resource.lain:192.168.77.201:300::",
-		"=hello.perf.lain:172.20.0.29:300::192.168.77.22",
+		"=hello.perf.lain:172.20.0.29:300::00",
 		".lain:192.168.77.202:a:300",
 		".20.172.in-addr.arpa:192.168.77.202:a:300",
+		"%00:192.168.77.22",
 	}
 	mockCreator := &Creator{
 		depends:  make(Depends),
