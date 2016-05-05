@@ -21,9 +21,8 @@ func NewCoreInfoWatcher(notify chan interface{}) *CoreInfoWatcher {
 
 func (w *CoreInfoWatcher) Watch() {
 	log.Infof("CoreInfoWatcher thread started")
-	ctx, _ := context.WithTimeout(context.Background(), lainletTimeout)
 	for {
-		if ch, err := lainletClient.Watch("/v2/coreinfowatcher", ctx); err != nil {
+		if ch, err := lainletClient.Watch("/v2/coreinfowatcher", context.Background()); err != nil {
 			log.Errorf("CoreInfoWatcher connect to lainlet failed. Retry in 3 seconds")
 		} else {
 			for resp := range ch {

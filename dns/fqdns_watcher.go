@@ -22,9 +22,8 @@ func NewFqdnsWatcher(notify chan interface{}) *FqdnsWatcher {
 
 func (w *FqdnsWatcher) Watch() {
 	log.Infof("FqdnsWatcher thread started")
-	ctx, _ := context.WithTimeout(context.Background(), lainletTimeout)
 	for {
-		if ch, err := lainletClient.Watch("/v2/configwatcher?target=tinydns_fqdns", ctx); err != nil {
+		if ch, err := lainletClient.Watch("/v2/configwatcher?target=tinydns_fqdns", context.Background()); err != nil {
 			log.Errorf("FqdnsWatcher connect to lainlet failed. Retry in 3 seconds")
 		} else {
 			for resp := range ch {
