@@ -22,9 +22,8 @@ func NewDependsWatcher(notify chan interface{}) *DependsWatcher {
 
 func (w *DependsWatcher) Watch() {
 	log.Infof("DependsWatcher thread started")
-	ctx, _ := context.WithTimeout(context.Background(), lainletTimeout)
 	for {
-		if ch, err := lainletClient.Watch("/v2/depends", ctx); err != nil {
+		if ch, err := lainletClient.Watch("/v2/depends", context.Background()); err != nil {
 			log.Errorf("DependsWatcher connect to lainlet failed. Retry in 3 seconds")
 		} else {
 			for resp := range ch {
