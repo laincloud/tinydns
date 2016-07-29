@@ -54,7 +54,7 @@ func (c *Creator) CreateDNS() {
 			}
 		case Fqdns:
 			newFqdns := data.(Fqdns)
-			if !reflect.DeepEqual(c.coreInfo, newFqdns) {
+			if !reflect.DeepEqual(c.fqdns, newFqdns) {
 				c.fqdns = newFqdns
 				needUpdate = true
 			}
