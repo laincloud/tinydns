@@ -108,7 +108,7 @@ func (c *Creator) prepareData() []string {
 			apps[appName] = 1
 		}
 		for _, podInfo := range val.PodInfos {
-			if podInfo.InstanceNo > 0 {
+			if podInfo.InstanceNo > 0 && len(podInfo.Containers) > 0 {
 				lines = append(lines,
 					fmt.Sprintf("=%s-%d.%s.lain:%s:300",
 						procName,
@@ -134,7 +134,6 @@ func (c *Creator) prepareData() []string {
 							annotationInfo.ServiceName,
 							appName,
 							portalInfo.Containers[0].ContainerIP,
-							//portalInfo.Containers[0].NodeIP))
 							node.GetID(portalInfo.Containers[0].NodeIP)))
 				}
 			}
@@ -152,7 +151,7 @@ func (c *Creator) prepareData() []string {
 			if key == "tinydns_fqdns/webrouter.lain" {
 				if strings.HasPrefix(line, "+webrouter.lain:") {
 					fields := strings.Split(line, ":")
-					if len(fields) >= 1 {
+					if len(fields) > 1 {
 						webrouterIp = fields[1]
 					} else {
 						log.Errorf("Cannot get webrouter ip: %s\n", line)
@@ -164,7 +163,7 @@ func (c *Creator) prepareData() []string {
 	}
 
 	if webrouterIp != "" {
-		for app, _ := range apps {
+		for app := range apps {
 			lines = append(lines, fmt.Sprintf("+%s.lain:%s:300::", app, webrouterIp))
 		}
 	}

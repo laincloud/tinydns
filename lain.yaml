@@ -1,9 +1,9 @@
 appname: tinydns
 
 build:
-  base: laincloud/centos-lain:20160503
+  base: laincloud/centos-lain:20170217
   prepare:
-    version: 200
+    version: 201
     script:
       - yum install -y ndjbdns supervisor
       - yum -y clean all

@@ -6,3 +6,5 @@ env/
 .ropeproject/
 Dockerfile
 logs
+.idea/
+tinydns.iml
