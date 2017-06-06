@@ -22,6 +22,7 @@ worker:
   cmd: /usr/bin/supervisord -c /lain/app/supervisord.conf
   memory: 256m
   port: 53
+  setup_time: 30
   env:
     - LAINLET_PORT=9001
   volumes:
@@ -31,5 +32,6 @@ worker:
     - tinydns.err
     - dns-creator.log
     - dns-creator.err
+
 notify:
   slack: "#lain"
