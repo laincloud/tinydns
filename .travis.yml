@@ -1,0 +1,23 @@
+sudo: false
+
+language: python
+
+python:
+  - "2.7"
+
+services:
+  - docker
+
+install: "pip install lain-cli"
+
+script:
+  - lain config save-global private_docker_registry 'registry.lain.local'
+  - lain test
+
+after_success:
+  - if [ "$TRAVIS_TAG" != "" ]; then
+    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+    lain config save offical domain 'docker.io/laincloud'
+    lain tag offical;
+    lain push offical;
+    fi
