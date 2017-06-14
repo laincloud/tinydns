@@ -12,12 +12,16 @@ install: "pip install lain-cli"
 
 script:
   - lain config save-global private_docker_registry 'registry.lain.local'
+  - lain build
   - lain test
 
 after_success:
+  - LAIN_APPNAME=tinydns
+  - LAIN_IMAGE_VERSION="$(git show -s --format=%ct $TRAVIS_COMMIT)-$TRAVIS_COMMIT"
   - if [ "$TRAVIS_TAG" != "" ]; then
-    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-    lain config save offical domain 'docker.io/laincloud'
-    lain tag offical;
-    lain push offical;
+    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS";
+    docker tag $LAIN_APPNAME:release-$LAIN_IMAGE_VERSION laincloud/$LAIN_APPNAME:release-$LAIN_IMAGE_VERSION;
+    docker tag $LAIN_APPNAME:meta-$LAIN_IMAGE_VERSION laincloud/$LAIN_APPNAME:meta-$LAIN_IMAGE_VERSION;
+    docker push laincloud/$LAIN_APPNAME:release-$LAIN_IMAGE_VERSION;
+    docker push laincloud/$LAIN_APPNAME:meta-$LAIN_IMAGE_VERSION;
     fi
