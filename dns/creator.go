@@ -140,7 +140,6 @@ func (c *Creator) prepareData() []string {
 		}
 	}
 
-	var webrouterIp string
 	for key, val := range c.fqdns {
 		var domains []string
 		if err := json.Unmarshal([]byte(val), &domains); err != nil {
@@ -148,23 +147,7 @@ func (c *Creator) prepareData() []string {
 			continue
 		}
 		for _, line := range domains {
-			if key == "tinydns_fqdns/webrouter.lain" {
-				if strings.HasPrefix(line, "+webrouter.lain:") {
-					fields := strings.Split(line, ":")
-					if len(fields) > 1 {
-						webrouterIp = fields[1]
-					} else {
-						log.Errorf("Cannot get webrouter ip: %s\n", line)
-					}
-				}
-			}
 			lines = append(lines, line)
-		}
-	}
-
-	if webrouterIp != "" {
-		for app := range apps {
-			lines = append(lines, fmt.Sprintf("+%s.lain:%s:300::", app, webrouterIp))
 		}
 	}
 
